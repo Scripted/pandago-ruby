@@ -5,7 +5,15 @@ describe Pandago do
     expect(Pandago::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  describe ".url" do
+    before { @old_url = Pandago.class_variable_get(:@@url) }
+    after { Pandago.class_variable_set(:@@url, @old_url) }
+
+    it "should be able to get and set url" do
+      Pandago.url = "https://example.com"
+      expect(Pandago.url).to eq URI("https://example.com")
+    end
   end
+
+
 end

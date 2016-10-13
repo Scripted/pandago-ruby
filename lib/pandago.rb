@@ -1,5 +1,17 @@
 require "pandago/version"
+require "uri"
 
 module Pandago
-  # Your code goes here...
+  @@url = nil
+
+  class << self
+    def url
+      @@url
+    end
+
+    def url=(url)
+      @@url = URI(url)
+      self.url
+    end
+  end
 end
