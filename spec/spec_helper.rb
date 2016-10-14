@@ -1,6 +1,8 @@
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "pandago"
 
+SPEC_ROOT = Pathname(__FILE__)/".."
+
 require "pry-byebug"
 
 begin
