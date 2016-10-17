@@ -1,9 +1,10 @@
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "pandago"
 
-SPEC_ROOT = Pathname(__FILE__)/".."
-
+require "rspec/its"
 require "pry-byebug"
+
+SPEC_ROOT = Pathname(__FILE__)/".."
 
 begin
   ping = Net::HTTP.new("localhost", 8080).get("/ping")

@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.13.3"
   spec.add_development_dependency "rake", "~> 10.5.0"
   spec.add_development_dependency "rspec", "~> 3.5.0"
+  spec.add_development_dependency "rspec-its", "~> 1.2.0"
   spec.add_development_dependency "pry", "~> 0.10.4"
   spec.add_development_dependency "pry-byebug", "~> 3.4.0"
 end
