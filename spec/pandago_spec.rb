@@ -18,7 +18,7 @@ describe Pandago do
   describe ".convert" do
     let(:source) { StringIO.new("<h1>Hello, World!</h1><p>This is a paragraph</p>") }
 
-    it "returns an IO object with the result" do
+    it "takes and IO object and returns an IO object with the result" do
       converted = described_class.convert(source, from: :html, to: :markdown)
       expect(converted.read).to eq "Hello, World!\n=============\n\nThis is a paragraph\n"
     end
@@ -42,6 +42,8 @@ describe Pandago do
           converted = described_class.convert(source_html, from: :html, to: :markdown)
           expect(converted.read).to eq expect_markdown.read
         end
+
+        it "should convert to docx" # TODO: figure out how to implement this
       end
 
       context "when converting from markdown" do
@@ -54,6 +56,8 @@ describe Pandago do
           converted = described_class.convert(source_markdown, from: :markdown, to: :markdown)
           expect(converted.read).to eq expect_markdown.read
         end
+
+        it "should convert to docx" # TODO: figure out how to implement this
       end
 
       context "when converting from docx" do
@@ -66,6 +70,8 @@ describe Pandago do
           converted = described_class.convert(source_docx, from: :docx, to: :markdown)
           expect(converted.read).to eq expect_markdown.read
         end
+
+        it "should convert to docx" # TODO: figure out how to implement this
       end
     end
   end
