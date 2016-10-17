@@ -32,25 +32,23 @@ module Pandago
 
     def body
       source_io.rewind
+      <<~BODY
+        --#{ BOUNDARY }
+        Content-Disposition: form-data; name="from"
 
-      body = ""
+        #{ read_format }
+        --#{ BOUNDARY }
+        Content-Disposition: form-data; name="to"
 
-      body << "--#{ BOUNDARY }\r\n"
-      body << "Content-Disposition: form-data; name=\"from\"\r\n\r\n"
-      body << "#{ read_format }\r\n"
+        #{ write_format }
+        --#{ BOUNDARY }
+        Content-Disposition: form-data; name="payload"; filename="payload"
+        Content-Type: #{ ContentTypes[read_format] }
 
-      body << "--#{ BOUNDARY }\r\n"
-      body << "Content-Disposition: form-data; name=\"to\"\r\n\r\n"
-      body << "#{ write_format }\r\n"
+        #{ source_io.read }
 
-      body << "--#{ BOUNDARY }\r\n"
-      body << "Content-Disposition: form-data; name=\"payload\"; filename=\"payload\"\r\n"
-      body << "Content-Type: #{ ContentTypes[read_format] }\r\n\r\n"
-      body << source_io.read
-      body << "\r\n"
-
-      body << "--#{ BOUNDARY }--\r\n"
-      body
+        --#{ BOUNDARY }--
+      BODY
     end
   end
 end
