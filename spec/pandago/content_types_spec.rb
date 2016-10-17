@@ -6,6 +6,6 @@ describe Pandago::ContentTypes do
   its([:docx]) { should eq "application/vnd.openxmlformats-officedocument.wordprocessingml.document" }
 
   it "raises when a format is not supported" do
-    expect { described_class[:invalid] }.to raise_error /not supported/
+    expect { described_class[:invalid] }.to raise_error Pandago::ContentTypeNotSupportedError
   end
 end

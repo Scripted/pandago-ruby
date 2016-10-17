@@ -1,5 +1,6 @@
 require "pandago/version"
 require "pandago/converter"
+require "pandago/errors"
 
 module Pandago
   BOUNDARY = "__X_PANDAGO_BOUNDARY_QYcwwbmfzj3rfKcMk7AWNw__"
@@ -16,6 +17,7 @@ module Pandago
     end
 
     def convert(file, from:, to:)
+      raise UrlNotSetError if url.nil?
       self::Converter.new(file, from, to, url).converted_content
     end
   end

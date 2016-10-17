@@ -1,3 +1,5 @@
+require "pandago/errors"
+
 module Pandago
   module ContentTypes
     TYPES = {
@@ -7,7 +9,7 @@ module Pandago
     }
 
     def self.[](name)
-      TYPES.fetch(name.to_s) { |name| raise "Content-Type not supported for: #{ name }" }
+      TYPES.fetch(name.to_s) { |name| raise ContentTypeNotSupportedError, name }
     end
   end
 end
