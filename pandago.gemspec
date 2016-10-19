@@ -5,11 +5,11 @@ require 'pandago/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "pandago"
-  spec.version       = Pandago::VERSION
+  spec.version       = PandaGo::VERSION
   spec.authors       = ["Tony Ta"]
   spec.email         = ["tonyta.tt@gmail.com"]
 
-  spec.summary       = "A lightweight Ruby Wrapper for Pandago (Pandoc served with Go)"
+  spec.summary       = "A lightweight Ruby Wrapper for PandaGo (Pandoc served with Go)"
   spec.homepage      = "https://github.com/scripted/pandago-ruby"
   spec.license       = "MIT"
 

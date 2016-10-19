@@ -12,4 +12,4 @@ rescue Errno::ECONNREFUSED
   raise "PandaGo server must be running at localhost:8080!"
 end
 
-Pandago.url = "http://localhost:8080"
+PandaGo.url = "http://localhost:8080"

@@ -1,7 +1,7 @@
 require "net/http"
 require "pandago/content_types"
 
-module Pandago
+module PandaGo
   class Converter
     BOUNDARY = "__X_PANDAGO_BOUNDARY_QYcwwbmfzj3rfKcMk7AWNw__"
 

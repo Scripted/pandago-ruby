@@ -1,6 +1,6 @@
 require "pandago/errors"
 
-module Pandago
+module PandaGo
   module ContentTypes
     TYPES = {
       "markdown" => "text/markdown; charset=UTF-8",

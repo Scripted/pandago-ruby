@@ -2,7 +2,7 @@ require "pandago/version"
 require "pandago/converter"
 require "pandago/errors"
 
-module Pandago
+module PandaGo
   @@url = nil
 
   class << self

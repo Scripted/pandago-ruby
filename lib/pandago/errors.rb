@@ -1,4 +1,4 @@
-module Pandago
+module PandaGo
   class Error < StandardError; end
 
   class ContentTypeNotSupportedError < Error
@@ -9,7 +9,7 @@ module Pandago
 
   class UrlNotSetError < Error
     def initialize
-      super("Pandago.url has not been set")
+      super("PandaGo.url has not been set")
     end
   end
 end

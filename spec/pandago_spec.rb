@@ -1,13 +1,13 @@
 require "spec_helper"
 
-describe Pandago do
+describe PandaGo do
   it "has a version number" do
-    expect(Pandago::VERSION).not_to be nil
+    expect(PandaGo::VERSION).not_to be nil
   end
 
   describe ".url" do
-    before { @old_url = Pandago.class_variable_get(:@@url) }
-    after { Pandago.class_variable_set(:@@url, @old_url) }
+    before { @old_url = PandaGo.class_variable_get(:@@url) }
+    after { PandaGo.class_variable_set(:@@url, @old_url) }
 
     it "should be able to get and set url" do
       described_class.url = "https://example.com"
@@ -24,13 +24,13 @@ describe Pandago do
       expect(subject.read).to eq "Hello, World!\n=============\n\nThis is a paragraph\n"
     end
 
-    context "when Pandago.url has not been set" do
-      before { @old_url = Pandago.class_variable_get(:@@url) }
-      after { Pandago.class_variable_set(:@@url, @old_url) }
+    context "when PandaGo.url has not been set" do
+      before { @old_url = PandaGo.class_variable_get(:@@url) }
+      after { PandaGo.class_variable_set(:@@url, @old_url) }
 
       it "should raise an error" do
-        Pandago.class_variable_set(:@@url, nil)
-        expect { subject }.to raise_error Pandago::UrlNotSetError
+        PandaGo.class_variable_set(:@@url, nil)
+        expect { subject }.to raise_error PandaGo::UrlNotSetError
       end
     end
   end

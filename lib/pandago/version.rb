@@ -1,3 +1,3 @@
-module Pandago
+module PandaGo
   VERSION = "0.1.0"
 end
