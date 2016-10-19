@@ -13,7 +13,11 @@ module PandaGo
     end
 
     def convert
-      StringIO.new(response.body)
+      if response.code == "200"
+        StringIO.new(response.body)
+      else
+        raise RequestError, response
+      end
     end
 
     def request

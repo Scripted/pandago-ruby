@@ -4,6 +4,9 @@ require "pandago"
 require "rspec/its"
 require "pry-byebug"
 
+require "webmock/rspec"
+WebMock.disable_net_connect!(allow_localhost: true)
+
 SPEC_ROOT = Pathname(__FILE__)/".."
 
 begin
@@ -13,3 +16,8 @@ rescue Errno::ECONNREFUSED
 end
 
 PandaGo.url = "http://localhost:8080"
+
+RSpec.configure do |config|
+  config.filter_run_including focus: true
+  config.run_all_when_everything_filtered = true
+end

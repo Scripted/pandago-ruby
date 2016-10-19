@@ -28,9 +28,17 @@ describe PandaGo do
       before { @old_url = PandaGo.class_variable_get(:@@url) }
       after { PandaGo.class_variable_set(:@@url, @old_url) }
 
-      it "should raise an error" do
+      it "should raise a UrlNotSetError" do
         PandaGo.class_variable_set(:@@url, nil)
         expect { subject }.to raise_error PandaGo::UrlNotSetError
+      end
+    end
+
+    context "when the server returns an error" do
+      before { stub_request(:post, "localhost:8080/convert").to_return(status: [500, "Internal Server Error"]) }
+
+      it "should raise a RequestError" do
+        expect { subject }.to raise_error PandaGo::RequestError, /500 Internal Server Error/
       end
     end
   end

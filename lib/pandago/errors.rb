@@ -12,4 +12,13 @@ module PandaGo
       super("PandaGo.url has not been set")
     end
   end
+
+  class RequestError < Error
+    attr_reader :response
+
+    def initialize(response)
+      @response = response
+      super("#{ response.code } #{ response.message }")
+    end
+  end
 end
