@@ -1,3 +1,4 @@
+require "net/http"
 require "pandago/content_types"
 
 module Pandago
