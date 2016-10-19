@@ -5,16 +5,6 @@ describe PandaGo do
     expect(PandaGo::VERSION).not_to be nil
   end
 
-  describe ".url" do
-    before { @old_url = PandaGo.class_variable_get(:@@url) }
-    after { PandaGo.class_variable_set(:@@url, @old_url) }
-
-    it "should be able to get and set url" do
-      described_class.url = "https://example.com"
-      expect(described_class.url).to eq URI("https://example.com")
-    end
-  end
-
   describe ".convert" do
     let(:source) { StringIO.new("<h1>Hello, World!</h1><p>This is a paragraph</p>") }
 
@@ -24,12 +14,15 @@ describe PandaGo do
       expect(subject.read).to eq "Hello, World!\n=============\n\nThis is a paragraph\n"
     end
 
-    context "when PandaGo.url has not been set" do
-      before { @old_url = PandaGo.class_variable_get(:@@url) }
-      after { PandaGo.class_variable_set(:@@url, @old_url) }
+    context "when PandaGo url has not been configured" do
+      around do |example|
+        old_config = PandaGo.configuration
+        PandaGo.instance_variable_set(:@configuration, PandaGo::Configuration.new)
+        example.run
+        PandaGo.instance_variable_set(:@configuration, old_config)
+      end
 
       it "should raise a UrlNotSetError" do
-        PandaGo.class_variable_set(:@@url, nil)
         expect { subject }.to raise_error PandaGo::UrlNotSetError
       end
     end

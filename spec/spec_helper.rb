@@ -15,7 +15,9 @@ rescue Errno::ECONNREFUSED
   raise "PandaGo server must be running at localhost:8080!"
 end
 
-PandaGo.url = "http://localhost:8080"
+PandaGo.configure do |config|
+  config.url = "http://localhost:8080"
+end
 
 RSpec.configure do |config|
   config.filter_run_including focus: true

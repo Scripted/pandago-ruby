@@ -7,5 +7,5 @@ end
 
 describe PandaGo::UrlNotSetError do
   subject { described_class.new }
-  its(:message) { should eq "PandaGo.url has not been set" }
+  its(:message) { should eq "PandaGo url has not been configured" }
 end

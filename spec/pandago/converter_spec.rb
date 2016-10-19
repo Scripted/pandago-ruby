@@ -12,12 +12,12 @@ describe PandaGo::Converter do
 
     context "when converting from html" do
       it "should convert to html" do
-        subject = described_class.new(source_html, :html, :html, PandaGo.url)
+        subject = described_class.new(source_html, :html, :html, PandaGo.configuration)
         expect(subject.convert.read).to eq expect_html.read
       end
 
       it "should convert to markdown" do
-        subject = described_class.new(source_html, :html, :markdown, PandaGo.url)
+        subject = described_class.new(source_html, :html, :markdown, PandaGo.configuration)
         expect(subject.convert.read).to eq expect_markdown.read
       end
 
@@ -26,12 +26,12 @@ describe PandaGo::Converter do
 
     context "when converting from markdown" do
       it "should convert to html" do
-        subject = described_class.new(source_markdown, :markdown, :html, PandaGo.url)
+        subject = described_class.new(source_markdown, :markdown, :html, PandaGo.configuration)
         expect(subject.convert.read).to eq expect_html.read
       end
 
       it "should convert to markdown" do
-        subject = described_class.new(source_markdown, :markdown, :markdown, PandaGo.url)
+        subject = described_class.new(source_markdown, :markdown, :markdown, PandaGo.configuration)
         expect(subject.convert.read).to eq expect_markdown.read
       end
 
@@ -40,12 +40,12 @@ describe PandaGo::Converter do
 
     context "when converting from docx" do
       it "should convert to html" do
-        subject = described_class.new(source_docx, :docx, :html, PandaGo.url)
+        subject = described_class.new(source_docx, :docx, :html, PandaGo.configuration)
         expect(subject.convert.read).to eq expect_html.read
       end
 
       it "should convert to markdown" do
-        subject = described_class.new(source_docx, :docx, :markdown, PandaGo.url)
+        subject = described_class.new(source_docx, :docx, :markdown, PandaGo.configuration)
         expect(subject.convert.read).to eq expect_markdown.read
       end
 

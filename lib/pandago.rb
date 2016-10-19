@@ -1,23 +1,20 @@
 require "pandago/version"
+require "pandago/configuration"
 require "pandago/converter"
 require "pandago/errors"
 
 module PandaGo
-  @@url = nil
-
   class << self
-    def url
-      @@url
+    def configure
+      yield configuration if block_given?
     end
 
-    def url=(url)
-      @@url = URI(url)
-      self.url
+    def configuration
+      @configuration ||= self::Configuration.new
     end
 
     def convert(file, from:, to:)
-      raise UrlNotSetError if url.nil?
-      self::Converter.new(file, from, to, url).convert
+      self::Converter.new(file, from, to, configuration).convert
     end
   end
 end

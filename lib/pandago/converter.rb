@@ -5,11 +5,11 @@ module PandaGo
   class Converter
     BOUNDARY = "__X_PANDAGO_BOUNDARY_QYcwwbmfzj3rfKcMk7AWNw__"
 
-    attr_reader :source_io, :read_format, :write_format, :url
+    attr_reader :source_io, :read_format, :write_format, :config
 
-    def initialize(source_io, read_format, write_format, url)
+    def initialize(source_io, read_format, write_format, config)
       @source_io, @read_format, @write_format = source_io, read_format, write_format
-      @url = url
+      @config = config
     end
 
     def convert
@@ -28,7 +28,10 @@ module PandaGo
     end
 
     def response
-      @response ||= Net::HTTP.new(url.host, url.port).request(request)
+      return @response if defined? @response
+      raise UrlNotSetError if config.url.nil?
+      http = Net::HTTP.new(config.host, config.port)
+      @response = http.request(request)
     end
 
     def header

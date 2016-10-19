@@ -9,7 +9,7 @@ module PandaGo
 
   class UrlNotSetError < Error
     def initialize
-      super("PandaGo.url has not been set")
+      super("PandaGo url has not been configured")
     end
   end
 
