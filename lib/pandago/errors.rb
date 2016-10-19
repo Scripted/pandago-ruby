@@ -21,4 +21,10 @@ module PandaGo
       super("#{ response.code } #{ response.message }")
     end
   end
+
+  class TimeoutError < Error
+    def initialize
+      super("Request took longer than #{ PandaGo.configuration.timeout } seconds")
+    end
+  end
 end

@@ -31,7 +31,10 @@ module PandaGo
       return @response if defined? @response
       raise UrlNotSetError if config.url.nil?
       http = Net::HTTP.new(config.host, config.port)
+      http.read_timeout = config.timeout
       @response = http.request(request)
+    rescue Net::ReadTimeout
+      raise TimeoutError
     end
 
     def header

@@ -9,4 +9,11 @@ describe PandaGo::Configuration do
         and change { subject.port }.from(nil).to(8080)
     end
   end
+
+  describe "timeout" do
+    it "should configure the timeout in seconds" do
+      expect { subject.timeout = 10 }.
+        to change { subject.timeout }.from(5).to(10)
+    end
+  end
 end

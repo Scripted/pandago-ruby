@@ -34,5 +34,13 @@ describe PandaGo do
         expect { subject }.to raise_error PandaGo::RequestError, /500 Internal Server Error/
       end
     end
+
+    context "when the server times out" do
+      before { stub_request(:post, "localhost:8080/convert").to_return(exception: Net::ReadTimeout) }
+
+      it "should raise a TimeoutError" do
+        expect { subject }.to raise_error PandaGo::TimeoutError
+      end
+    end
   end
 end

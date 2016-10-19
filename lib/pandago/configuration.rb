@@ -2,8 +2,9 @@ require "uri"
 
 module PandaGo
   class Configuration
-    attr_reader :url
+    DEFAULT_TIMEOUT = 5
 
+    attr_reader :url
     def url=(url)
       @url = URI(url)
       self.url
@@ -16,5 +17,10 @@ module PandaGo
     def host
       url&.host
     end
+
+    def timeout
+      @timeout || DEFAULT_TIMEOUT
+    end
+    attr_writer :timeout
   end
 end
