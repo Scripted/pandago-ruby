@@ -7,7 +7,7 @@ A lightweight Ruby wrapper for [PandaGo](https://github.com/Scripted/pandago).
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'pandago'
+gem "pandago", "~> 1.0.0"
 ```
 
 And then execute:
