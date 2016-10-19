@@ -18,9 +18,42 @@ Or install it yourself as:
 
     $ gem install pandago
 
+## Configuration
+
+You must to have a [PandaGo](https://github.com/Scripted/pandago) server running.
+
+``` ruby
+PandaGo.configure do |config|
+  config.url = "http://your-pandago-instance.herokuapp.com"
+  config.timeout = 10 # default is 5 seconds
+end
+```
+
 ## Usage
 
-TODO: Write usage instructions here
+Given the file `hello_world.html`, just pass it into `#convert` with the input
+and output formats.
+
+``` ruby
+file = File.open("hello_world.html")
+file.read
+# => "<h1>Hello, World!</h1>\n<p>Here's looking at you.</p>\n"
+
+io = PandaGo.convert(file, from: :html, to: :markdown)
+io.read
+# => "Hello, World!\n=============\n\nHere's looking at you.\n"
+```
+
+You can also convert strings by wrapping them in a `StringIO` object.
+
+``` ruby
+string = "<h1>So Long!</h1><p>And thanks for all the fish.</p>"
+input_io = StringIO.new(string)
+
+io = PandaGo.convert(input_io, from: :html, to: :markdown)
+io.read
+# => "So Long!\n========\n\nAnd thanks for all the fish.\n"
+```
 
 ## Development
 
