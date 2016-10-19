@@ -12,7 +12,7 @@ module PandaGo
       @url = url
     end
 
-    def converted_content
+    def convert
       StringIO.new(response.body)
     end
 

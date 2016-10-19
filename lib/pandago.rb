@@ -17,7 +17,7 @@ module PandaGo
 
     def convert(file, from:, to:)
       raise UrlNotSetError if url.nil?
-      self::Converter.new(file, from, to, url).converted_content
+      self::Converter.new(file, from, to, url).convert
     end
   end
 end
