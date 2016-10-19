@@ -3,7 +3,6 @@ require "pandago/converter"
 require "pandago/errors"
 
 module Pandago
-  BOUNDARY = "__X_PANDAGO_BOUNDARY_QYcwwbmfzj3rfKcMk7AWNw__"
   @@url = nil
 
   class << self
