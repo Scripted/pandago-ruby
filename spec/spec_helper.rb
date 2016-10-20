@@ -1,5 +1,8 @@
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 
+require "pathname"
+require "net/http"
+
 SPEC_ROOT = Pathname(__FILE__)/".."
 PANDAGO_URL = URI(ENV.fetch("PANDAGO_URL") { "http://localhost:8080" }).freeze
 
