@@ -29,4 +29,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry", "~> 0.10.4"
   spec.add_development_dependency "pry-byebug", "~> 3.4.0"
   spec.add_development_dependency "webmock", "~> 2.1.0"
+  spec.add_development_dependency "coveralls", "~> 0.8.15"
 end

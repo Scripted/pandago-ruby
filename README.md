@@ -1,5 +1,11 @@
 # PandaGo Ruby
 
+[![Gem Version][gem_version_badge]][rubygems]
+[![Travis CI][travis_badge]][travis]
+[![Coverage Status][coverage_badge]][coverage]
+[![Code Climate][codeclimate_badge]][codeclimate]
+[![License][license_badge]][license]
+
 A lightweight Ruby wrapper for [PandaGo](https://github.com/Scripted/pandago).
 
 ## Installation
@@ -68,3 +74,18 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/script
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
+[gem_version_badge]: http://img.shields.io/gem/v/pandago.svg?style=flat
+[rubygems]: http://rubygems.org/gems/pandago
+
+[travis_badge]: http://img.shields.io/travis/Scripted/pandago-ruby.svg?style=flat
+[travis]: https://travis-ci.org/Scripted/pandago-ruby
+
+[coverage_badge]: https://img.shields.io/coveralls/Scripted/pandago-ruby.svg?style=flat
+[coverage]: https://coveralls.io/r/Scripted/pandago-ruby
+
+[codeclimate_badge]: https://img.shields.io/codeclimate/github/Scripted/pandago-ruby.svg?style=flat
+[codeclimate]: https://codeclimate.com/github/Scripted/pandago-ruby
+
+[license_badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[license]: https://github.com/Scripted/pandago-ruby/blob/master/LICENSE.txt
