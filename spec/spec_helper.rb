@@ -1,22 +1,27 @@
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
+
+SPEC_ROOT = Pathname(__FILE__)/".."
+PANDAGO_URL = URI(ENV.fetch("PANDAGO_URL") { "http://localhost:8080" }).freeze
+
 require "pandago"
 
 require "rspec/its"
 require "pry-byebug"
 
-require "webmock/rspec"
-WebMock.disable_net_connect!(allow_localhost: true)
+require 'coveralls'
+Coveralls.wear!
 
-SPEC_ROOT = Pathname(__FILE__)/".."
+require "webmock/rspec"
+WebMock.disable_net_connect!(allow: PANDAGO_URL.to_s)
 
 begin
-  ping = Net::HTTP.new("localhost", 8080).get("/ping")
-rescue Errno::ECONNREFUSED
-  raise "PandaGo server must be running at localhost:8080!"
+  Net::HTTP.new(PANDAGO_URL.host, PANDAGO_URL.port).get("/ping")
+rescue
+  raise "PandaGo server cannot be found at #{PANDAGO_URL}!"
 end
 
 PandaGo.configure do |config|
-  config.url = "http://localhost:8080"
+  config.url = PANDAGO_URL
 end
 
 RSpec.configure do |config|

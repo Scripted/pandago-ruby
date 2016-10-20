@@ -28,7 +28,7 @@ describe PandaGo do
     end
 
     context "when the server returns an error" do
-      before { stub_request(:post, "localhost:8080/convert").to_return(status: [500, "Internal Server Error"]) }
+      before { stub_request(:post, PANDAGO_URL + "/convert").to_return(status: [500, "Internal Server Error"]) }
 
       it "should raise a RequestError" do
         expect { subject }.to raise_error PandaGo::RequestError, /500 Internal Server Error/
@@ -36,7 +36,7 @@ describe PandaGo do
     end
 
     context "when the server times out" do
-      before { stub_request(:post, "localhost:8080/convert").to_return(exception: Net::ReadTimeout) }
+      before { stub_request(:post, PANDAGO_URL + "/convert").to_return(exception: Net::ReadTimeout) }
 
       it "should raise a TimeoutError" do
         expect { subject }.to raise_error PandaGo::TimeoutError
